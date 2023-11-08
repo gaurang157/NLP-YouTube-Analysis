@@ -1,6 +1,6 @@
 import streamlit as st
 import youtube_transcript_api
-import re
+# import re
 from collections import Counter
 import re
 # Import libraries
@@ -165,9 +165,14 @@ if process_button:
     # def get_analyzers():
     #     from setup import analyzer, emotion_analyzer, hate_speech_analyzer
     #     return analyzer, emotion_analyzer, hate_speech_analyzer
-    from my_module import get_analyzers
+    # from my_module import get_analyzers
     
-    # Load analyzers
+    # # Load analyzers
+    # analyzers = get_analyzers()
+    @st.cache_resource()
+    def get_analyzers():
+        from setup import analyzer, emotion_analyzer, hate_speech_analyzer
+        return analyzer, emotion_analyzer, hate_speech_analyzer
     analyzers = get_analyzers()
     
     # Now you can use the analyzers for text analysis
@@ -576,5 +581,5 @@ if process_button:
     st.subheader("Common Keywords:")
     st.write(common_keywords)
     st.balloons()
-    st.cache_resource.clear()
+    # st.cache_resource.clear()
 st.write("Note: This app uses the YouTube Transcript API to retrieve captions.")
