@@ -576,4 +576,5 @@ if process_button:
     st.subheader("Common Keywords:")
     st.write(common_keywords)
     st.balloons()
+    st.cache_resource.clear()
 st.write("Note: This app uses the YouTube Transcript API to retrieve captions.")
